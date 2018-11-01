@@ -31,5 +31,90 @@ body {
   url(../img/hero.jpg);
   background-size: cover; /* it matches the size of the header box */ 
   background-position: top;
+  position: relative;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px; /* The px count is in relation to its parent element that hasa position relative. in This case, it is the header element. */
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+}
+
+.logo:hover {
+  animation: moveInRIght 1s ease-out;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%; /* this is in relation to the parent element */
+  left: 50%;
+  transform: translate(-50%, -50%); /* how much we want to shift the element by, in relation to itself */
+}
+
+.heading-primary {
+  color: #ffffff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /* to fix the shaking of the main and sub title */
+}
+
+.heading-primary-main {
+  display: block; /* block elements take up the entire width of the parent element and adds line breaks before and after them. */
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+ 
+  /*
+  animation-iteration-count: 3;
+  animation-delay: 3s;
+  */
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
