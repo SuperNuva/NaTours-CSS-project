@@ -54,6 +54,7 @@ body {
   top: 40%; /* this is in relation to the parent element */
   left: 50%;
   transform: translate(-50%, -50%); /* how much we want to shift the element by, in relation to itself */
+  text-align: center; /* to have the button in center, as the button is treated as an inline text */
 }
 
 .heading-primary {
@@ -61,6 +62,7 @@ body {
   text-transform: uppercase;
 
   backface-visibility: hidden; /* to fix the shaking of the main and sub title */
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -117,4 +119,73 @@ body {
     opacity: 1;
     transform: translate(0);
   }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px; /* 200/500px wiil be the same*/
+  transition: all .2s; /* the transition property has to on the initial state */
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px); /* to move up, it has to be a negative number*/
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.btn-white {
+  background-color: white;
+  color: #777;
+}
+
+/*
+/* this pseudoclass is for the button expansion animation-not that necessary
+
+.btn::after {
+  content: ""; /* content and display is must 
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: white;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+*/
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; /* automatically applies the 0% animation first */
 }
